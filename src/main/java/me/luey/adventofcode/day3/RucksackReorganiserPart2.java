@@ -1,12 +1,12 @@
+package me.luey.adventofcode.day3;
+
+import me.luey.adventofcode.day2.RockPaperScissorsPart1;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class RucksackReorganiserPart2 {
 

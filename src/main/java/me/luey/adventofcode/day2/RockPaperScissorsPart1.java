@@ -1,3 +1,7 @@
+package me.luey.adventofcode.day2;
+
+import me.luey.adventofcode.Utils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -57,39 +61,35 @@ public class RockPaperScissorsPart1 {
     }
 
     public static void main(String[] args) {
-        String inputFilename = "strategy-guide.txt";
-
-        int score = new RockPaperScissorsPart1().calculateScore(
-                Objects.requireNonNull(RockPaperScissorsPart1.class.getClassLoader().getResource(inputFilename)).getPath());
+        String score = Utils.readFile("strategy-guide.txt", RockPaperScissorsPart1::calculateScore);
 
         System.out.println("Total score: " + score);
     }
 
-    public int calculateScore(String filepath) {
+    public static String calculateScore(BufferedReader bufferedReader) {
         int score = 0;
 
-        try (FileReader fileReader = new FileReader(filepath);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                Move opponentsMove = Move.fromABC(line.charAt(0));
-                Move myMove = Move.fromXYZ(line.charAt(2));
-
-                System.out.println("Me: " + myMove + " vs opponent: " + opponentsMove);
-
-                score += scoreMyMove(myMove);
-                score += scoreMatch(opponentsMove, myMove);
+        String line;
+        while (true) {
+            try {
+                if (!((line = bufferedReader.readLine()) != null))
+                    break;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+            Move opponentsMove = Move.fromABC(line.charAt(0));
+            Move myMove = Move.fromXYZ(line.charAt(2));
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Me: " + myMove + " vs opponent: " + opponentsMove);
+
+            score += scoreMyMove(myMove);
+            score += scoreMatch(opponentsMove, myMove);
         }
 
-        return score;
+        return String.valueOf(score);
     }
 
-    private int scoreMyMove(Move move) {
+    private static int scoreMyMove(Move move) {
         switch (move) {
             case ROCK:
                 System.out.println("Adding 1 point for playing rock");
@@ -105,7 +105,7 @@ public class RockPaperScissorsPart1 {
         }
     }
 
-    private int scoreMatch(Move opponent, Move mine) {
+    private static int scoreMatch(Move opponent, Move mine) {
         switch (Move.winComparator.compare(opponent, mine)) {
             case -1:
                 System.out.println("I lose by playing " + mine + " against " + opponent);
