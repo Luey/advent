@@ -10,23 +10,21 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Day5 implements Solution {
-
-    List<Deque<Character>> containers = List.of(
-            new LinkedList<>(List.of()), // to fix index 0
-            new LinkedList<>(List.of('F', 'G', 'V', 'R', 'J', 'L', 'D')),
-            new LinkedList<>(List.of('S', 'J', 'H', 'V', 'B', 'M', 'P', 'T')),
-            new LinkedList<>(List.of('C', 'P', 'G', 'D', 'F', 'M', 'H', 'V')),
-            new LinkedList<>(List.of('Q', 'G', 'N', 'P', 'D', 'M')),
-            new LinkedList<>(List.of('F', 'N', 'H', 'L', 'J')),
-            new LinkedList<>(List.of('Z', 'T', 'G', 'D', 'Q', 'V', 'F', 'N')),
-            new LinkedList<>(List.of('L', 'B', 'D', 'F')),
-            new LinkedList<>(List.of('N', 'D', 'V', 'S', 'B', 'J', 'M')),
-            new LinkedList<>(List.of('D', 'L', 'G'))
-    );
-
-
     @Override
     public String part1(BufferedReader bufferedReader) throws IOException {
+            List<Deque<Character>> containers = List.of(
+                    new LinkedList<>(List.of()), // to fix index 0
+                    new LinkedList<>(List.of('F', 'G', 'V', 'R', 'J', 'L', 'D')),
+                    new LinkedList<>(List.of('S', 'J', 'H', 'V', 'B', 'M', 'P', 'T')),
+                    new LinkedList<>(List.of('C', 'P', 'G', 'D', 'F', 'M', 'H', 'V')),
+                    new LinkedList<>(List.of('Q', 'G', 'N', 'P', 'D', 'M')),
+                    new LinkedList<>(List.of('F', 'N', 'H', 'L', 'J')),
+                    new LinkedList<>(List.of('Z', 'T', 'G', 'D', 'Q', 'V', 'F', 'N')),
+                    new LinkedList<>(List.of('L', 'B', 'D', 'F')),
+                    new LinkedList<>(List.of('N', 'D', 'V', 'S', 'B', 'J', 'M')),
+                    new LinkedList<>(List.of('D', 'L', 'G'))
+            );
+
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 Matcher m = Pattern.compile("move (?<times>\\p{Digit}+) from (?<from>\\p{Digit}+) to (?<to>\\p{Digit}+)").matcher(line);
@@ -49,6 +47,19 @@ public class Day5 implements Solution {
 
     @Override
     public String part2(BufferedReader bufferedReader) throws IOException {
+        List<Deque<Character>> containers = List.of(
+                new LinkedList<>(List.of()), // to fix index 0
+                new LinkedList<>(List.of('F', 'G', 'V', 'R', 'J', 'L', 'D')),
+                new LinkedList<>(List.of('S', 'J', 'H', 'V', 'B', 'M', 'P', 'T')),
+                new LinkedList<>(List.of('C', 'P', 'G', 'D', 'F', 'M', 'H', 'V')),
+                new LinkedList<>(List.of('Q', 'G', 'N', 'P', 'D', 'M')),
+                new LinkedList<>(List.of('F', 'N', 'H', 'L', 'J')),
+                new LinkedList<>(List.of('Z', 'T', 'G', 'D', 'Q', 'V', 'F', 'N')),
+                new LinkedList<>(List.of('L', 'B', 'D', 'F')),
+                new LinkedList<>(List.of('N', 'D', 'V', 'S', 'B', 'J', 'M')),
+                new LinkedList<>(List.of('D', 'L', 'G'))
+        );
+
         String line;
         while ((line = bufferedReader.readLine()) != null) {
             Matcher m = Pattern.compile("move (?<times>\\p{Digit}+) from (?<from>\\p{Digit}+) to (?<to>\\p{Digit}+)").matcher(line);
