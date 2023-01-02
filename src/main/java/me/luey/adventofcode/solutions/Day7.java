@@ -2,18 +2,19 @@ package me.luey.adventofcode.solutions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
 public class Day7 implements Solution {
-    int result = 0;
+    int FILE_SYSTEM_CAPACITY = 70000000;
+    int FREE_SPACE_REQUIRED = 30000000;
 
-    public static void main(String[] args) {
-        Results results = Solution.runSolution("day7.txt", new Day7());
-        System.out.println("RESULT: " + results.part1());
-    }
+    int result = 0;
+    NavigableSet<Integer> folderSizes = new TreeSet();
 
     @Override
     public String part1(BufferedReader bufferedReader) throws IOException {
-        getSize(bufferedReader);
+        System.out.println(getSize(bufferedReader));
         return String.valueOf(result);
     }
 
@@ -47,11 +48,13 @@ public class Day7 implements Solution {
         }
 
         System.out.println("Folder size is " + folderSize);
+        folderSizes.add(folderSize);
         return folderSize;
     }
 
     @Override
     public String part2(BufferedReader bufferedReader) throws IOException {
-        return null;
+        int additionalSpaceRequired = FREE_SPACE_REQUIRED + getSize(bufferedReader) - FILE_SYSTEM_CAPACITY;
+        return String.valueOf(folderSizes.higher(additionalSpaceRequired));
     }
 }
