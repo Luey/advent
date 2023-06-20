@@ -13,14 +13,18 @@ class SolutionTest {
 
     @ParameterizedTest(name = "{0}")
     @MethodSource("params")
-    void testPart1(Solution underTest, String inputFileName, String expectedPart1, String expectedPart2) throws IOException {
-        assertThat(underTest.part1(Solution.createBufferedReader(inputFileName))).isEqualTo(expectedPart1);
-    }
+    void testSolutions(Solution underTest, String inputFileName, String expectedPart1, String expectedPart2) throws IOException {
+        SolutionRunner runner = new SolutionRunner(underTest, inputFileName);
 
-    @ParameterizedTest(name = "{0}")
-    @MethodSource("params")
-    void testPart2(Solution underTest, String inputFileName, String expectedPart1, String expectedPart2) throws IOException {
-        assertThat(underTest.part2(Solution.createBufferedReader(inputFileName))).isEqualTo(expectedPart2);
+        String resultPart1 = runner.part1();
+        assertThat(resultPart1)
+                .withFailMessage("Incorrect answer for part 1 - expected %s but got %s", expectedPart1, resultPart1)
+                .isEqualTo(expectedPart1);
+
+        String resultPart2 = runner.part2();
+        assertThat(resultPart2)
+                .withFailMessage("Incorrect answer for part 2 - expected %s but got %s", expectedPart2, resultPart2)
+                .isEqualTo(expectedPart2);
     }
 
     private static Stream<Arguments> params() {

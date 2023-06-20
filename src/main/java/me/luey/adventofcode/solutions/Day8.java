@@ -9,11 +9,6 @@ public class Day8 implements Solution {
     private int height;
     private int width;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = Solution.createBufferedReader("day8.txt");
-        System.out.println(new Day8().part1(bufferedReader));
-    }
-
     @Override
     public String part1(BufferedReader bufferedReader) throws IOException {
         final int[][] treeHeights = getInput(bufferedReader);
