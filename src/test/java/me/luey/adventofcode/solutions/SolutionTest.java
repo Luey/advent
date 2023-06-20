@@ -35,8 +35,9 @@ class SolutionTest {
                 Arguments.of(new Day4(), "day4.txt", "456", "808"),
                 Arguments.of(new Day5(), "day5.txt", "QMBMJDFTD", "NBTVTJNFJ"),
                 Arguments.of(new Day6(), "day6.txt", "1140", "3495"),
-                Arguments.of(new Day7(), "day7-example.txt", "95437", "0"),
-                Arguments.of(new Day7(), "day7.txt", "1844187", "0")
+                Arguments.of(new Day7(), "day7-example.txt", "95437", "24933642"),
+                Arguments.of(new Day7(), "day7.txt", "1844187", "4978279"),
+                Arguments.of(new Day8(), "day8.txt", "1854", "")
         );
     }
 }
