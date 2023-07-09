@@ -24,7 +24,7 @@ public class SolutionRunner {
         return solution.part2(createBufferedReader(inputFilename));
     }
 
-    private static BufferedReader createBufferedReader(String inputFilename) throws FileNotFoundException {
+    public static BufferedReader createBufferedReader(String inputFilename) throws FileNotFoundException {
         String inputFilePath = Objects.requireNonNull(Solution.class.getClassLoader().getResource(inputFilename)).getPath();
         return new BufferedReader(new FileReader(inputFilePath));
     }

@@ -6,15 +6,11 @@ import java.util.stream.Stream;
 
 public class Day8 implements Solution {
 
-    private int height;
-    private int width;
-
     @Override
     public String part1(BufferedReader bufferedReader) throws IOException {
-        final int[][] treeHeights = getInput(bufferedReader);
-
-        height = treeHeights.length;
-        width = treeHeights[0].length;
+        int[][] treeHeights = getInput(bufferedReader);
+        int height = treeHeights.length;
+        int width = treeHeights[0].length;
 
         boolean[][] isVisible = new boolean[height][width]; // cannot make numbers negative cos of 0
         for (int y = 0; y < height; y++) {
@@ -68,10 +64,10 @@ public class Day8 implements Solution {
             }
         }
 
-        return String.valueOf(countVisibleTrees(isVisible));
+        return String.valueOf(countVisibleTrees(isVisible, height, width));
     }
 
-    private int countVisibleTrees(boolean[][] isVisible) {
+    private int countVisibleTrees(boolean[][] isVisible, int height, int width) {
         int isVisibleCount = 0;
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
