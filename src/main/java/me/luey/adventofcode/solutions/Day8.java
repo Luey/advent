@@ -88,6 +88,29 @@ public class Day8 implements Solution {
 
     @Override
     public String part2(BufferedReader bufferedReader) throws IOException {
-        return null;
+        int[][] treeHeights = getInput(bufferedReader);
+
+        int highestScenicScore = 0;
+
+        treesVisibleUp(treeHeights, 0, 4,0);
+
+        return String.valueOf(highestScenicScore);
+    }
+
+    private int treesVisibleUp(int[][] treeHeights, int threshold, int y, int x) {
+        int currentHeight = treeHeights[y][x];
+
+        if (y == 0) {
+            threshold = currentHeight;
+            return 1;
+        }
+        if (currentHeight > threshold) {
+            return 0;
+        }
+        return treesVisibleUp(treeHeights, threshold, y - 1, x);
+    }
+
+    public static void main(String[] args) throws IOException {
+        new SolutionRunner(new Day8(), "day8-example.txt").part2();
     }
 }

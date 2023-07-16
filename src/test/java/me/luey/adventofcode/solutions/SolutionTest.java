@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SolutionTest {
 
-    @ParameterizedTest(name = "{0}")
+    @ParameterizedTest(name = "{1}")
     @MethodSource("params")
     void testSolutions(Solution underTest, String inputFileName, String expectedPart1, String expectedPart2) throws IOException {
         SolutionRunner runner = new SolutionRunner(underTest, inputFileName);
